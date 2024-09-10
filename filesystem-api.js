@@ -2,6 +2,8 @@ import  express from "express";
 import { Createfiles,getfiles } from "./modules/file-creation-deletions.js";
 
 const server = express();
+
+//To Create Files
 server.post("/create-file",(req,res)=>{
     const data = new Date();
     const timestramp = data.getTime().toString();
@@ -11,6 +13,7 @@ server.post("/create-file",(req,res)=>{
     });
 });
 
+//To Get the Files from Folder
 server.get("/get-files",(req,res)=>{
     getfiles("./api-files",(data)=> res.json(data),()=>res.status(500).json({msg:"Somthing Went Wrong!!!"}))
 })
